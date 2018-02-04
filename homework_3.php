@@ -1,8 +1,5 @@
-,<?php
+<?php
 
-$space=" ";
-
-// Создаем исходный массив
 echo "Шаг 1: Создаем исходный массив";
 $continents = array(
 	"africa"=>array("Hexaprotodon liberiensis","Porcus"),
@@ -14,9 +11,8 @@ $continents = array(
 echo "<pre>";
 print_r($continents);
 
+echo "Шаг 2: Перебираем массив и выносим составные имена в отдельный плоский массив", PHP_EOL; 
 $double_names=array();
-
-echo "Шаг 2: Перебираем массив и выносим имена с 2 и более словами в отдельный плоский массив", PHP_EOL; 
 
 foreach ($continents as $continent => $animals)
 {
