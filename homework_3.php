@@ -11,31 +11,38 @@ $continents = array(
 	"north_america"=>array("Ovibos moschatus", "Pennanti"),
 	"australia"=>array("Macropus rufus", "Harrisii"),
 	"antarctica"=>array("Balaenoptera musculu", "Borealis"));
-
 echo "<pre>";
 print_r($continents);
 
-echo "Шаг 2: Преобразовываем массив в строку";
+$double_names=array();
+
+echo "Шаг 2: Перебираем массив и выносим имена с 2 и более словами в отдельный плоский массив", PHP_EOL; 
 
 foreach ($continents as $continent => $animals)
 {
-	$animal_list=implode(", ", $animals);
-		echo "<pre>";
-		print_r($animal_list);
+	foreach ($animals as $key => $names) 
+	{
+		if (str_word_count($names)>=2) 
+		{
+			$double_names[]=$names;
+		}
+	}
 }
-echo "\n";
-echo "Шаг 3: Ищем в строке, ограниченной символом запятой, пробел и выводим эти значения в отдельный массив", PHP_EOL;
-
-
-echo "<pre>";
 print_r($double_names);
 
+echo "Шаг 3: Перемешиваем вторую часть составных имен и получаем фантазийных животных", PHP_EOL;
 
-echo "Шаг 4: Перемешиваем значения в массиве", PHP_EOL;
-$result=shuffle($double_names);
-echo "<pre>";
-print_r($result);
+$second_part=[];
+$fantasy_animals=[];
 
+foreach ($double_names as $v) 
+{
+	$space=strpos($v, " ");
+	$second_part[]=substr($v, $space);
+	shuffle($second_part);
+	$fantasy_animals[]=substr_replace($v, $second_part, $space);
+}
+print_r($fantasy_animals);
 
 ?>
 
