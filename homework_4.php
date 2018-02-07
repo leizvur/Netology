@@ -14,11 +14,16 @@ $result=json_decode($content, true);
 print_r($result);*/
 
 //echo "Шаг 3: выводим показания температуры и погодных условий", PHP_EOL;
+$temperature=$result[main][temp];
+$pressure=$result[main][pressure];
+$humidity=$result[main][humidity];
+$cloudy=$result[clouds][all];
+$wind=$result[wind][speed];
 ?>
 
 <h1>Текущая погода в Москве</h1>
-<p><strong>Температура</strong>: <?php echo $result[main][temp]; ?>С, свежо </p>
-<p><strong>Давление</strong>: <?php echo $result[main][pressure]; ?> мм р.с.  </p>
-<p><strong>Влажность</strong>: <?php echo $result[main][humidity]; ?>% </p>
-<p><strong>Облачность</strong>: <?php echo $result[clouds][all] . "%, " . "самое время рассмотреть небо"; ?> </p>
-<p><strong>Ветер</strong>: <?php echo $result[wind][speed]; ?> м\с, не забудьте шляпу и подзорную трубу </p>
+<p><strong>Температура</strong>: <?php echo $temperature; ?>С, свежо </p>
+<p><strong>Давление</strong>: <?php echo $pressure; ?> мм р.с.  </p>
+<p><strong>Влажность</strong>: <?php echo $humidity; ?>% </p>
+<p><strong>Облачность</strong>: <?php echo $cloudy . "%, " . "самое время рассмотреть небо"; ?> </p>
+<p><strong>Ветер</strong>: <?php echo $wind; ?> м\с, не забудьте шляпу и подзорную трубу </p>
