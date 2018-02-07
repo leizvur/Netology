@@ -11,14 +11,14 @@ $continents = array(
 echo "<pre>";
 print_r($continents);
 
-echo "Шаг 2: Перебираем массив и выносим составные имена в отдельный плоский массив", PHP_EOL; 
-$double_names=array();
+echo "Шаг 2: Перебираем массив и выносим имена с 2 словами в отдельный плоский массив", PHP_EOL;
 
+$double_names=[];
 foreach ($continents as $continent => $animals)
 {
 	foreach ($animals as $key => $names) 
 	{
-		if (str_word_count($names)>=2) 
+		if (str_word_count($names)==2) 
 		{
 			$double_names[]=$names;
 		}
@@ -35,11 +35,21 @@ foreach ($double_names as $v)
 {
 	$space=strpos($v, " ");
 	$second_part[]=substr($v, $space);
-	shuffle($second_part);
-	$fantasy_animals[]=substr_replace($v, $second_part, $space);
+}
+	
+shuffle($second_part);
+echo "<pre>";
+print_r($second_part);
+
+foreach ($double_names as $v) 
+{
+	foreach ($second_part as $magic) 
+	{
+		
+		$space=strpos($v, " ");
+		$fantasy_animals[]=substr_replace($v, $magic, $space);
+	}
 }
 print_r($fantasy_animals);
 
 ?>
-
-  
