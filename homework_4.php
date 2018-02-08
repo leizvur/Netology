@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 $result=[];
 $weather="http://api.openweathermap.org/data/2.5/weather?q=Moscow,ru&units=metric&APPID=00919a794567725c48568e1eed3ba56b";
 
@@ -14,11 +17,11 @@ $result=json_decode($content, true);
 print_r($result);*/
 
 //echo "Шаг 3: выводим показания температуры и погодных условий", PHP_EOL;
-$temperature=$result[main][temp];
-$pressure=$result[main][pressure];
-$humidity=$result[main][humidity];
-$cloudy=$result[clouds][all];
-$wind=$result[wind][speed];
+$temperature=$result['main']['temp'];
+$pressure=$result['main']['pressure'];
+$humidity=$result['main']['humidity'];
+$cloudy=$result['clouds']['all'];
+$wind=$result['wind']['speed'];
 ?>
 
 <h1>Текущая погода в Москве</h1>
