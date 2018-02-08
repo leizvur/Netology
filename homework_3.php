@@ -43,12 +43,8 @@ print_r($second_part);
 
 foreach ($double_names as $v) 
 {
-	foreach ($second_part as $magic) 
-	{
-		
-		$space=strpos($v, " ");
-		$fantasy_animals[]=substr_replace($v, $magic, $space);
-	}
+	$space=strpos($v, " ");
+	$fantasy_animals[]=substr_replace($v, $second_part, $space);
 }
 print_r($fantasy_animals);
 
