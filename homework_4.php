@@ -3,7 +3,9 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 $result=[];
-$weather="http://api.openweathermap.org/data/2.5/weather?q=Moscow,ru&units=metric&APPID=00919a794567725c48568e1eed3ba56b";
+$service_id="00919a794567725c48568e1eed3ba56b";
+$city="Moscow, ru";
+$weather="http://api.openweathermap.org/data/2.5/weather?q=$city&units=metric&APPID=$service_id";
 
 // echo "Шаг 1: вытаскиваем содержимое с сайта", PHP_EOL;
 $content=file_get_contents($weather);
