@@ -11,7 +11,7 @@ $continents = array(
 echo "<pre>";
 print_r($continents);
 
-echo "Шаг 2: Перебираем массив и выносим имена с 2 словами в отдельный плоский массив", PHP_EOL;
+echo "Шаг 2: Перебираем массив, имена из 2 слов выносим в отдельные плоские массивы: первая и вторая часть имени", PHP_EOL;
 
 $doubleNames=[];
 foreach ($continents as $continent => $animals)
@@ -20,23 +20,11 @@ foreach ($continents as $continent => $animals)
 	{
 		if (str_word_count($names)==2) 
 		{
-			$doubleNames[]=$names;
+			$nameParts=explode(" ", $names);
+			$firstPart[]=$nameParts[0];
+			$secondPart[]=$nameParts[1];
 		}
 	}
-}
-print_r($doubleNames);
-
-
-
-
-echo "Шаг 3: делим двойные имена на отдельные массивы с первой и второй частью имен", PHP_EOL;
-
-foreach ($doubleNames as $value) 
-{
-	$nameParts=explode(" ", $value);
-	$firstPart[]=$nameParts[0];
-	$secondPart[]=$nameParts[1];
-
 }
 
 echo "<pre>";
@@ -46,19 +34,18 @@ echo "<pre>";
 print_r($secondPart);
 echo "</pre>";
 
-
-echo "Шаг 4: Перемешиваем вторую часть имен", PHP_EOL;
+echo "Шаг 3: Перемешиваем вторую часть имен", PHP_EOL;
 
 shuffle($secondPart);
 echo "<pre>";
 print_r($secondPart);
 echo "</pre>";
 
-echo "Шаг 5: Получаем фантазийных животных", PHP_EOL;
+echo "Шаг 4: Получаем фантазийных животных", PHP_EOL;
 
 foreach ($firstPart as $key => $v) 
 {
-	$fantasyAnimals[]=$firstPart[$key] . " " . $secondPart[$key];
+	$fantasyAnimals[]=$v . " " . $secondPart[$key];
 }
 
 print_r($fantasyAnimals);
